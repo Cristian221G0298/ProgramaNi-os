@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="ProrgamaNiños.Views.CumplenEsreMesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProrgamaNiños.Views" xmlns:viewmodels="clr-namespace:ProrgamaNiños.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:InfantesViewmodel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel Margin="10">
+        <TextBlock HorizontalAlignment="Center" FontSize="40" DockPanel.Dock="Top" FontWeight="Bold" Margin="0,0,0,20">Cumplen años este mes</TextBlock>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding CumplenEsteMes}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="#D1D1D1" BorderThickness="1" Background="White" Padding="15" Margin="10" CornerRadius="15"  VerticalAlignment="Top">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" FontSize="22" FontWeight="Bold" Text="{Binding Nombre}" Margin="0,0,0,5"/>
+                                <TextBlock Grid.Row="1" FontSize="14" Opacity="0.7" Text="{Binding Domicilio}" Margin="0,0,0,5"/>
+                                <TextBlock Grid.Row="2" FontSize="12" Opacity="0.6" Text="{Binding FechaNacimiento, StringFormat='{}{0:d} de {0:MMMM} del {0:yyyy}'}" Margin="0,0,0,10"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>
