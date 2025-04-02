@@ -51,6 +51,12 @@
                        FontSize="12" 
                        TextDecorations="None">Ver infantes con 14 años</Hyperlink>
                 </TextBlock>
+                <TextBlock  Padding="10,5,25,0">
+<Hyperlink Command="{Binding VerEstadisticasCommand}" 
+                       Foreground="DarkBlue"
+                       FontSize="12" 
+                       TextDecorations="None">Ver estadísticas</Hyperlink>
+                </TextBlock>
             </StackPanel>
            
         </Grid>

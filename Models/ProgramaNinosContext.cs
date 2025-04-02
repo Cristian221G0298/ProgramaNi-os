@@ -26,6 +26,8 @@ public partial class ProgramaNinosContext : DbContext
 
     public virtual DbSet<Vwcumplemes> Vwcumplemes { get; set; }
 
+    public virtual DbSet<Vwestadisticaciudades> Vwestadisticaciudades { get; set; }
+
     public virtual DbSet<Vwmayoresde15> Vwmayoresde15 { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -47,6 +49,9 @@ public partial class ProgramaNinosContext : DbContext
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
+            entity.Property(e => e.Ciudad)
+                .HasMaxLength(50)
+                .HasColumnName("ciudad");
             entity.Property(e => e.Domicilio)
                 .HasDefaultValueSql("'desconocido'")
                 .HasColumnType("text")
@@ -146,6 +151,20 @@ public partial class ProgramaNinosContext : DbContext
             entity.Property(e => e.Nombre)
                 .HasMaxLength(100)
                 .HasColumnName("nombre");
+        });
+
+        modelBuilder.Entity<Vwestadisticaciudades>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("vwestadisticaciudades");
+
+            entity.Property(e => e.Ciudad)
+                .HasMaxLength(50)
+                .HasColumnName("ciudad");
+            entity.Property(e => e.Count)
+                .HasColumnType("bigint(21)")
+                .HasColumnName("COUNT(*)");
         });
 
         modelBuilder.Entity<Vwmayoresde15>(entity =>

@@ -12,4 +12,6 @@ public partial class Infantes
     public DateTime? FechaNacimiento { get; set; }
 
     public string? Domicilio { get; set; }
+
+    public string Ciudad { get; set; } = null!;
 }

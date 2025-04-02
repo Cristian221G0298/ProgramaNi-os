@@ -23,7 +23,10 @@ namespace ProrgamaNiños.Repositories
         {
             return context.Vmmenoresde15;
         }
-
+        public IEnumerable<Vwestadisticaciudades> GetEstadisticas()
+        {
+            return context.Vwestadisticaciudades;
+        }
         public IEnumerable<Vwcumplemes> GetMenoresCumplenEsteMes()
         {
             return context.Vwcumplemes;

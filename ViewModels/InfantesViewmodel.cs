@@ -1,4 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using LiveCharts;
+using LiveCharts.Wpf;
 using ProrgamaNiños.Models;
 using ProrgamaNiños.Repositories;
 using ProrgamaNiños.Views;
@@ -23,6 +25,7 @@ namespace ProrgamaNiños.ViewModels
         CumplenEsreMesView ViewCumplenEsreMes = new();
         MenoresDe15View ViewVigentes = new();
         VerCatorceView ViewCatorce = new();
+        EstadisticasView ViewEstadisticas = new();
         public ObservableCollection<Vmcumplenhoy> CumpleañosDeHoy { get; set; } = new();
         public ObservableCollection<Vmmenoresde15> Vigentes { get; set; } = new();
         public ObservableCollection<Vwcumplemes> CumplenEsteMes { get; set; } = new();
@@ -49,6 +52,7 @@ namespace ProrgamaNiños.ViewModels
                 error = value;
             }
         }
+        public SeriesCollection Series { get; set; } = new();
         public ICommand VerAgregarCommand { get; set; }
         public ICommand VerCumpleañosDeHoyCommand { get; set; }
         public ICommand VerCumpleañosDeEsteMesCommand { get; set; }
@@ -56,6 +60,7 @@ namespace ProrgamaNiños.ViewModels
         public ICommand AgregarCommand { get; set; }
         public ICommand CancelarCommand { get; set; }
         public ICommand VerCatorceCommand {  get; set; }
+        public ICommand VerEstadisticasCommand {  get; set; }
         public InfantesViewmodel()
         {
             VerAgregarCommand = new RelayCommand(VerAgregar);
@@ -65,7 +70,23 @@ namespace ProrgamaNiños.ViewModels
             CancelarCommand = new RelayCommand(Cancelar);
             VerCumpleañosDeHoyCommand = new RelayCommand(CumpleañosHoy);
             VerCatorceCommand = new RelayCommand(VerCatorce);
+            VerEstadisticasCommand = new RelayCommand(VerEstadisticas);
             verVigentes();
+        }
+
+        private void VerEstadisticas()
+        {
+            Vista = ViewEstadisticas;
+            Series.Clear();
+            foreach (var item in Repos.GetEstadisticas())
+            {
+                Series.Add(new PieSeries 
+                { Title = item.Ciudad, 
+                    DataLabels = true, 
+                    LabelPoint = ChartPoint => $"{item.Ciudad}: {item.Count}",
+                    FontSize = 20,
+                    Values = new ChartValues<long> { item.Count} });
+            }
         }
 
         private void VerCatorce()
