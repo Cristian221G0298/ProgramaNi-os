@@ -61,6 +61,7 @@ namespace ProrgamaNiños.ViewModels
         public ICommand CancelarCommand { get; set; }
         public ICommand VerCatorceCommand {  get; set; }
         public ICommand VerEstadisticasCommand {  get; set; }
+        public ICommand EliminarNoVigentesCommand {  get; set; }
         public InfantesViewmodel()
         {
             VerAgregarCommand = new RelayCommand(VerAgregar);
@@ -71,7 +72,13 @@ namespace ProrgamaNiños.ViewModels
             VerCumpleañosDeHoyCommand = new RelayCommand(CumpleañosHoy);
             VerCatorceCommand = new RelayCommand(VerCatorce);
             VerEstadisticasCommand = new RelayCommand(VerEstadisticas);
+            EliminarNoVigentesCommand = new RelayCommand(EliminarNoVigentes);
             verVigentes();
+        }
+
+        private void EliminarNoVigentes()
+        {
+            Repos.EliminarNoVigentes();
         }
 
         private void VerEstadisticas()

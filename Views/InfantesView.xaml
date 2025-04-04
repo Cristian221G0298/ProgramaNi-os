@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProrgamaNiños.Views" xmlns:viewmodels="clr-namespace:ProrgamaNiños.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:InfantesViewmodel}"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="800" Background="#FFAAAA">
+             d:DesignHeight="400" d:DesignWidth="800" Background="#FFAAAA">
     <StackPanel VerticalAlignment="Center">
         <StackPanel.Resources>
             <Style TargetType="TextBlock">
@@ -27,12 +27,14 @@
         <DatePicker SelectedDate="{Binding infante.FechaNacimiento, Mode=TwoWay, StringFormat='dd/MM/yyyy'}" ></DatePicker>
         <TextBlock>Domicilio:</TextBlock>
         <TextBox  Text="{Binding infante.Domicilio}"></TextBox>
+        <TextBlock>Ciudad:</TextBlock>
+        <TextBox  Text="{Binding infante.Ciudad}"></TextBox>
         <StackPanel Orientation="Horizontal">
-            <Button Command="{Binding AgregarCommand}" Background="Transparent" BorderBrush="Blue" Height="80" Width="80" HorizontalAlignment="Left">
-                <!--<Image Source="https://cdn-icons-png.flaticon.com/128/1705/1705968.png"></Image>-->
+            <Button Command="{Binding AgregarCommand}" Background="Transparent" BorderBrush="Blue" Height="80" HorizontalAlignment="Left">
+                <Image Source="https://cdn-icons-png.flaticon.com/128/1705/1705968.png"></Image>
             </Button>
-            <Button Command="{Binding CancelarCommand}" Background="Transparent" BorderBrush="Red" Height="80" Width="80" HorizontalAlignment="Right">
-                <!--<Image Source="https://cdn-icons-png.flaticon.com/128/8763/8763323.png"></Image>-->
+            <Button Command="{Binding CancelarCommand}" Background="Transparent" BorderBrush="Red" Height="80" HorizontalAlignment="Right">
+                <Image Source="https://cdn-icons-png.flaticon.com/128/8763/8763323.png"></Image>
             </Button>
         </StackPanel>
     </StackPanel>

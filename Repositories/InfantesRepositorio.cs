@@ -1,4 +1,5 @@
-﻿using ProrgamaNiños.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ProrgamaNiños.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,6 +62,11 @@ namespace ProrgamaNiños.Repositories
             }
             error = string.Join(Environment.NewLine, errores);
             return errores.Count != 0;
+        }
+
+        public void EliminarNoVigentes()
+        {
+            context.Database.ExecuteSqlRaw("CALL spEliminarNoVigentes");
         }
     }
 }
